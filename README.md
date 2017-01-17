@@ -13,7 +13,6 @@ NSURLProtocol 子类，就可以对 app 内所有的网络请求进行:
 使我WKWebView 的一度认为请求不遵守NSURLProtocol协议，所以不走 NSURLProtocol。这个也是很苦扰我的问题。导致我们hybird的容器1.0也是是用UIWebVIew实现的。
 
 
-
 ![Aaron Swartz](https://github.com/LiuShuoyu/HybirdWKWebVIew/blob/master/jpeg/WechatIMG1.jpeg)
 
 
