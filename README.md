@@ -1,61 +1,57 @@
-
-##UIFrameButton介绍？
-
-* 继承UIButton，重写layoutSubviews，改变UIButton的imageView和titleLabel的的frame。可以任意该改变UIButtonimageView和titleLabel的的起始位置和中间距离。通过枚举，imageVIew和titleLabel分为上下，左右排列布局
-
-
-
-
-
-##界面样式
-
-```objectivec
-typedef NS_ENUM(NSInteger, UIButtonFrameSttyle)
-{
-
-LeftImageWithRightTitleFrameStyle=0,
-
-LeftTitleWithRightImageFrameStyle,
-
-TopImageWithbuttomTitleFrameStyle,
-
-TopTitleWithbuttomImageFrameStyle,
-};
+# WKWebView OC/Swift版 一款IOS8以后的web加载神器
+WKWebView 支持POST请求 加载本地页面 直接加载网页 JS交互 集成支付宝/微信URL支付功能  仿微信返回按钮
 ```
-##代码
+允许访问HTTP链接
+HTTPS权限:
+<key>NSAppTransportSecurity</key>
+<dict>
+<key>NSAllowsArbitraryLoads</key>
+<true/>
+</dict>
 
-```objectivec
-    UIFrameButton *btn =({
 
-                    UIFrameButton *newBtn=[[UIFrameButton  alloc] initWithFrame:CGRectMake(10, 10, 300, 300)];
-                    [newBtn addTarget:self action:@selector(clikBtn:) forControlEvents:UIControlEventTouchUpInside];
-                    newBtn.center =self.view.center;
-                    [newBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                    [newBtn setImage:[UIImage imageNamed:@"play"] forState:UIControlStateNormal];
-                    [newBtn setImage:[UIImage imageNamed:@"play"] forState:UIControlStateHighlighted];
+/**
+ 加载纯外部链接网页
 
-                    [newBtn setTitle:@"点击我,我开始移动" forState:UIControlStateNormal];
-                    newBtn.frameStyle =LeftImageWithRightTitleFrameStyle;
-                    newBtn.beginDistance =1;
-                    newBtn.layer.borderColor = [UIColor grayColor].CGColor;
-                    newBtn.layer.cornerRadius = 5;
-                    newBtn.layer.borderWidth =1;
-                    newBtn.layer.masksToBounds =YES;
-                    newBtn;
-                    });   
-    btn.frameStyle =TopImageWithbuttomTitleFrameStyle; //设置布局样式
-    btn.centerDistance =5；//设置image和title的距离
-    btn.beginDistance = 5 //设置subViews的开始的距离
+ @param string URL地址
+ */
+- (void)loadWebURLSring:(NSString *)string;
+/**
+ 加载本地网页
+ 
+ @param string 本地HTML文件名
+ */
+- (void)loadWebHTMLSring:(NSString *)string;
+
+/**
+ 加载外部链接POST请求(注意检查 WKJSPOST.html 文件是否存在 )
+ postData请求块 注意格式：@"\"username\":\"xxxx\",\"password\":\"xxxx\""
+ 
+ @param string 需要POST的URL地址
+ @param postData post请求块
+ */
+- (void)POSTWebURLSring:(NSString *)string postData:(NSString *)postData;
+
+
+Swift版本
+
+///加载普通URL
+let webView = WKWebViewController()
+webView.loadUrlSting(string: "https://www.baidu.com")
+
+/// 加载本地HTML
+/// 直接传入文件名即可
+let webView = WKWebViewController()
+webView.loadUrlSting(string: fileName)
+
+/// POST方式请求加载
+/// postString: post参数体 详情请搜索swift/oc转义字符（注意格式："\"username\":\"aaa\",\"password\":\"123\""）
+let webView = WKWebViewController()
+webView.loadUrlSting(string: url, postString: postString)
 
 
 ```
 
-##有问题反馈
-在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
+![Aaron Swartz](https://github.com/LiuShuoyu/HybirdWKWebVIew/blob/master/jpeg/WechatIMG1.jpeg)
 
-* QQ 476804765
-* Email:13281250969@163.com
 
-##下一步功能
-
-* 发布到cocoapods
