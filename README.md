@@ -65,9 +65,79 @@ if ([(id)cls respondsToSelector:sel]) {
 #pragma clang diagnostic pop
 }
 }
+
 ```
+注册后，客户端所有请求走+ (BOOL)canInitWithRequest:(NSURLRequest *)request。下面是打印的请求的log
+
+```
++ (BOOL)canInitWithRequest:(NSURLRequest *)request
+{
+NSLog(@"request.URL.absoluteString = %@",request.URL.absoluteString);
+NSString *scheme = [[request URL] scheme];
+if ( ([scheme caseInsensitiveCompare:@"http"]  == NSOrderedSame ||
+[scheme caseInsensitiveCompare:@"https"] == NSOrderedSame ))
+{
+//看看是否已经处理过了，防止无限循环
+if ([NSURLProtocol propertyForKey:KHybridNSURLProtocolHKey inRequest:request])
+return NO;
+return YES;
+}
+return NO;
+}
+
+![Aaron Swartz](https://github.com/LiuShuoyu/HybirdWKWebVIew/blob/master/jpeg/log.png)
 
 
+
+```
+request的重写定向，request的重写定向，替换百度知道的log
+```
++ (BOOL)canInitWithRequest:(NSURLRequest *)request
+{
+NSLog(@"request.URL.absoluteString = %@",request.URL.absoluteString);
+NSString *scheme = [[request URL] scheme];
+if ( ([scheme caseInsensitiveCompare:@"http"]  == NSOrderedSame ||
+[scheme caseInsensitiveCompare:@"https"] == NSOrderedSame ))
+{
+//看看是否已经处理过了，防止无限循环
+if ([NSURLProtocol propertyForKey:KHybridNSURLProtocolHKey inRequest:request])
+return NO;
+return YES;
+}
+return NO;
+}
+
+```
+这里最好加上缓存判断，加载本地离线文件， 这个直接简单的例子。
+``` 
+- (void)startLoading
+{
+NSMutableURLRequest *mutableReqeust = [[self request] mutableCopy];
+//给我们处理过的请求设置一个标识符, 防止无限循环,
+[NSURLProtocol setProperty:@YES forKey:KHybridNSURLProtocolHKey inRequest:mutableReqeust];
+
+//这里最好加上缓存判断，加载本地离线文件， 这个直接简单的例子。
+if ([mutableReqeust.URL.absoluteString isEqualToString:sourIconUrl])
+{
+NSData* data = UIImagePNGRepresentation([UIImage imageNamed:@"medlinker"]);
+NSURLResponse* response = [[NSURLResponse alloc] initWithURL:self.request.URL MIMEType:@"image/png" expectedContentLength:data.length textEncodingName:nil];
+[self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageAllowed];
+[self.client URLProtocol:self didLoadData:data];
+[self.client URLProtocolDidFinishLoading:self];
+}
+else
+{
+NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:nil];
+self.task = [session dataTaskWithRequest:self.request];
+[self.task resume];
+}
+}
+
+```
+下面是代码效果图
 ![Aaron Swartz](https://github.com/LiuShuoyu/HybirdWKWebVIew/blob/master/jpeg/WechatIMG1.jpeg)
+![Aaron Swartz](https://github.com/LiuShuoyu/HybirdWKWebVIew/blob/master/jpeg/WechatIMG1.jpeg)
+
+
 
 

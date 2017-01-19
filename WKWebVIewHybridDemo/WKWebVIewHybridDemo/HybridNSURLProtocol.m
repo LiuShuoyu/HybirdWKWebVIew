@@ -47,7 +47,6 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
         mutableReqeust = [NSMutableURLRequest requestWithURL:url1];
     }
     
-    
     return mutableReqeust;
 }
 
@@ -62,7 +61,7 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
     //给我们处理过的请求设置一个标识符, 防止无限循环,
     [NSURLProtocol setProperty:@YES forKey:KHybridNSURLProtocolHKey inRequest:mutableReqeust];
     
-    //这里最好加上缓存判断
+    //这里最好加上缓存判断，加载本地离线文件， 这个直接简单的例子。
     if ([mutableReqeust.URL.absoluteString isEqualToString:sourIconUrl])
     {
             NSData* data = UIImagePNGRepresentation([UIImage imageNamed:@"medlinker"]);
