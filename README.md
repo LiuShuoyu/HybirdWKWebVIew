@@ -85,7 +85,7 @@ return YES;
 return NO;
 }
 
-![Aaron Swartz](https://raw.githubusercontent.com/LiuShuoyu/HybirdWKWebVIew/master/jpeg/WechatLog.jpeg)
+![Aaron Swartz](https://github.com/LiuShuoyu/HybirdWKWebVIew/blob/master/jpeg/WechatLog.jpeg?raw=true)
 
 
 
