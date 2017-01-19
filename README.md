@@ -137,6 +137,13 @@ self.task = [session dataTaskWithRequest:self.request];
 下面是代码效果图
 ![Aaron Swartz](https://github.com/LiuShuoyu/HybirdWKWebVIew/blob/master/jpeg/WechatIMG1.jpeg)
 
+##有问题反馈
+在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
+
+* QQ 微信 476804765
+* Email:13281250969@163.com
+
+
 
 
 
