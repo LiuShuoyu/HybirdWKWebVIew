@@ -13,7 +13,7 @@ NSURLProtocol 子类，就可以对 app 内所有的网络请求进行:
 使我WKWebView 的一度认为请求不遵守NSURLProtocol协议，所以不走 NSURLProtocol。这个也是很苦扰我的问题。导致我们hybird的容器1.0也是是用UIWebVIew实现的。
 
 
-但在苹果放在gittub的CustomHTTPProtocol，明显感觉到WKWebview的也是遵守NSURLProtocol，要不也不会走+ (BOOL)canInitWithRequest:(NSURLRequest *)request;后来一个每天看博客和gittub的习惯帮助了我，找到一个大神的不久前开源库，尊重下原作者<a href="https://github.com/yeatse/">Yeatse CC</a>。
+但在苹果放在gittub的CustomHTTPProtocol，明显感觉到WKWebview的也是遵守NSURLProtocol，要不也不会走+ (BOOL)canInitWithRequest:(NSURLRequest *)request;后来一个每天看博客和gittub的习惯帮助了我，找到一个大神的不久前开源库。
 
 使用了WKBrowsingContextController和registerSchemeForCustomProtocol。 通过反射的方式拿到了私有的 class/selector。通过kvc取到browsingContextController。通过把注册把 http 和 https 请求交给 NSURLProtocol 处理
 ```
@@ -146,6 +146,8 @@ self.task = [session dataTaskWithRequest:self.request];
 * Email:13281250969@163.com
 
 
-
+###接受启发的作者的github
+github：<a href="https://github.com/yeatse/">Yeatse CC</a>
+苹果开发者文档：<a href="https://developer.apple.com/library/content/samplecode/CustomHTTPProtocol/Introduction/Intro.html/">apple</a>
 
 
