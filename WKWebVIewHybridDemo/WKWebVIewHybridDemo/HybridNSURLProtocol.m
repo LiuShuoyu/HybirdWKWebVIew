@@ -24,7 +24,6 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
 + (BOOL)canInitWithRequest:(NSURLRequest *)request
 {
     NSLog(@"request.URL.absoluteString = %@",request.URL.absoluteString);
-    
     NSString *scheme = [[request URL] scheme];
     if ( ([scheme caseInsensitiveCompare:@"http"]  == NSOrderedSame ||
           [scheme caseInsensitiveCompare:@"https"] == NSOrderedSame ))
@@ -32,7 +31,6 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
         //看看是否已经处理过了，防止无限循环
         if ([NSURLProtocol propertyForKey:KHybridNSURLProtocolHKey inRequest:request])
             return NO;
-        
         return YES;
     }
     return NO;

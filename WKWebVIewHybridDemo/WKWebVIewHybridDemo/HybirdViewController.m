@@ -21,9 +21,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    for (NSString* scheme in @[@"http", @"https"]) {
-        [NSURLProtocol wk_registerScheme:scheme];
-    }
+    [NSURLProtocol wk_registerScheme:@"http"];
+    [NSURLProtocol wk_registerScheme:@"https"];
+
     [self.view addSubview:self.webView];
     
     // Do any additional setup after loading the view.
