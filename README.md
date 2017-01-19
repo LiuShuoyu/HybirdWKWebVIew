@@ -85,12 +85,11 @@ return YES;
 return NO;
 }
 
+```
+
 ![Aaron Swartz](https://github.com/LiuShuoyu/HybirdWKWebVIew/blob/master/jpeg/WechatLog.jpeg?raw=true)
 ![Aaron Swartz](https://github.com/LiuShuoyu/HybirdWKWebVIew/blob/master/jpeg/WechatIMG1.jpeg)
 
-
-
-```
 request的重写定向，request的重写定向，替换百度知道的log
 ```
 + (BOOL)canInitWithRequest:(NSURLRequest *)request
