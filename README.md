@@ -86,6 +86,7 @@ return NO;
 }
 
 ![Aaron Swartz](https://github.com/LiuShuoyu/HybirdWKWebVIew/blob/master/jpeg/WechatLog.jpeg?raw=true)
+![Aaron Swartz](https://github.com/LiuShuoyu/HybirdWKWebVIew/blob/master/jpeg/WechatIMG1.jpeg)
 
 
 
