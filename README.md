@@ -88,7 +88,6 @@ return NO;
 ```
 
 ![Aaron Swartz](https://github.com/LiuShuoyu/HybirdWKWebVIew/blob/master/jpeg/WechatLog.jpeg?raw=true)
-![Aaron Swartz](https://github.com/LiuShuoyu/HybirdWKWebVIew/blob/master/jpeg/WechatIMG1.jpeg)
 
 request的重写定向，request的重写定向，替换百度知道的log
 ```
@@ -137,6 +136,8 @@ self.task = [session dataTaskWithRequest:self.request];
 下面是代码效果图
 
 ![Aaron Swartz](https://github.com/LiuShuoyu/HybirdWKWebVIew/blob/master/jpeg/WechatIMG1.jpeg)
+![Aaron Swartz](https://github.com/LiuShuoyu/HybirdWKWebVIew/blob/master/jpeg/WechatIMG2.jpeg)
+
 
 ##有问题反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
