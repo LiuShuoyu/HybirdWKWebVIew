@@ -100,10 +100,9 @@ if ( ([scheme caseInsensitiveCompare:@"http"]  == NSOrderedSame ||
 {
 //看看是否已经处理过了，防止无限循环
 if ([NSURLProtocol propertyForKey:KHybridNSURLProtocolHKey inRequest:request])
-return NO;
-return YES;
+  return YES;
 }
-return NO;
+  return NO;
 }
 
 ```
@@ -142,7 +141,7 @@ self.task = [session dataTaskWithRequest:self.request];
 ##有问题反馈
 在使用中有任何问题，欢迎反馈给我，可以用以下联系方式跟我交流
 
-* QQ 微信 476804765
+* QQ 微信: 476804765
 * Email:13281250969@163.com
 
 
